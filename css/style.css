@@ -2,12 +2,17 @@
 
 :root {
     --bg:          #F3F3F3;
+    --surface:     #FFFFFF;
+    --accent:      #745945;
     --text:        #1A1C1D;
+    --border:      #e2ddd6;
     --border-dark: #c4bfb8;
     --green:       #356557;
     --muted:       #999;
     --sans:        'Inter', sans-serif;
-    --serif:       'Playfair Display', serif;
+    --serif:       'Playfair Display', serif;  
+    --ease:        0.22s ease;
+    --radius:      24px;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -156,4 +161,75 @@ main {
     cursor: not-allowed; 
     transform: none; 
     box-shadow: none; 
+}
+.card-col { width: 100%; }
+
+.card {
+    position: relative;
+    width: 100%;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+}
+
+.card.fade-out { 
+    opacity: 0; 
+}
+
+.card.has-content {
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: 360px;
+}
+
+.card-placeholder { 
+    text-align: center; 
+    color: var(--muted); 
+    padding: 60px; 
+}
+
+.placeholder-icon { 
+    font-size: 3rem; 
+    margin-bottom: 16px; 
+}
+
+.card-placeholder p { 
+    font-size: 0.88rem; 
+    letter-spacing: 0.04em; 
+}
+
+.loading { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 16px; 
+    color: var(--muted); 
+    font-size: 0.84rem; 
+}
+
+.spinner {
+    width: 26px; height: 26px;
+    border: 2px solid var(--border);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: rotate 0.7s linear infinite;
+}
+
+@keyframes rotate { 
+    to { transform: rotate(360deg); } 
+}
+
+.empty-state { 
+    text-align: center; 
+    color: var(--muted); 
+    padding: 60px 40px; 
+    font-size: 0.88rem; 
+    line-height: 1.8; 
 }
