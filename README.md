@@ -3,3 +3,5 @@
 # Header und Farben
 
 # Footer
+
+# Hero Text & Layout

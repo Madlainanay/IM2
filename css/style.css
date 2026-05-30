@@ -74,3 +74,53 @@ footer {
     font-size: 0.74rem; 
     color: var(--muted); 
 }
+
+main {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 52px 40px 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.ready-tag {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-family: var(--sans);
+  font-size: clamp(2.6rem, 4vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+
+.accent-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--green);
+  font-size: 1.08em;
+}
+
+.hero-sub {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
