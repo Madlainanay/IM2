@@ -1,7 +1,3 @@
-# IM2
+# Dokument Setup
 
-## Hallo Maddy
-
-# Test
-
-# holabratucha
+# Header und Farben
