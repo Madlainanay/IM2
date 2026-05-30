@@ -5,6 +5,7 @@
     --text:        #030303;
     --border-dark: #948d83;
     --green:       #1ad6a1;
+    --muted:       #999;
     --sans:        'Inter', sans-serif;
     --serif:       'Playfair Display', serif;
 }
@@ -44,4 +45,32 @@ header {
 
 .logo-amp {
     color: var(--green);
+}
+
+footer {
+    background: var(--bg);
+    border-top: none;
+    padding: 32px 40px;
+}
+
+.footer-inner {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.footer-logo .logo-amp { 
+    color: var(--green); 
+}
+
+.footer-copy { 
+    font-size: 0.74rem; 
+    color: var(--muted); 
 }
