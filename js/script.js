@@ -123,4 +123,10 @@ async function spin() {
 
 document.getElementById("spin-btn").addEventListener("click", spin);
 
+document.getElementById("cocktail-card").addEventListener("click", function(e) {
+  const btn = e.target.closest(".card-heart");
+  if (!btn || !currentDrink) return;
+  btn.classList.toggle("active");
+});
+
 spin(); 

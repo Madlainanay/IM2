@@ -303,7 +303,6 @@ main {
     font-weight: 700; 
 }
 
-
 .card-image-side {
     width: 240px;
     flex-shrink: 0;
@@ -319,12 +318,52 @@ main {
     display: block; 
 }
 
-
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 .card.has-content { 
     animation: fadeUp 0.32s ease forwards; 
+}
+
+.card-heart {
+    position: absolute;
+    top: 34px; right: 34px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(6px);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: transform var(--ease);
+}
+
+.card-heart svg { 
+    width: 16px; 
+    height: 16px; 
+    stroke: var(--green); 
+    fill: none; 
+    transition: stroke var(--ease), fill var(--ease); 
+}
+
+.card-heart:hover { 
+    transform: scale(1.1); 
+}
+
+.card-heart:hover svg { 
+    fill: var(--green); 
+}
+
+.card-heart.active svg { 
+    stroke: var(--green); 
+    fill: var(--green); 
+}
+
+.card-heart.active:hover svg { 
+    fill: white; 
 }
 
