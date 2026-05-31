@@ -11,3 +11,5 @@
 # Farben
 
 # Cocktail Karte
+
+# JavaScript: API & Karte befüllen
