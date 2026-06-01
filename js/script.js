@@ -123,10 +123,76 @@ async function spin() {
 
 document.getElementById("spin-btn").addEventListener("click", spin);
 
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("sip-favorites") || "[]");
+}
+
+function saveFavorites(favs) {
+  localStorage.setItem("sip-favorites", JSON.stringify(favs));
+}
+
+function isFavorite(id) {
+  return getFavorites().some(f => f.idDrink === String(id));
+}
+
+function toggleFavorite(drink) {
+  const sid = String(drink.idDrink);
+  let favs = getFavorites();
+  if (favs.some(f => f.idDrink === sid)) {
+    favs = favs.filter(f => f.idDrink !== sid); // entfernen
+  } else {
+    favs.push({ idDrink: sid, strDrink: drink.strDrink, strDrinkThumb: drink.strDrinkThumb });
+  }
+  saveFavorites(favs);
+  renderFavorites();
+}
+
+function renderFavorites() {
+  const favs = getFavorites().filter(f => f.strDrink && f.strDrink !== "undefined");
+  const section = document.getElementById("favorites-section");
+  const list = document.getElementById("favorites-list");
+
+  section.style.display = "block";
+
+  if (favs.length === 0) {
+    list.innerHTML = `<p class="favorites-empty">You don't have any favorites yet.</p>`;
+    return;
+  }
+
+  list.innerHTML = favs.map(f => `
+    <div class="fav-card">
+      <div class="fav-img-wrap">
+        <img class="fav-img" src="${f.strDrinkThumb}" alt="${f.strDrink}">
+        <button class="fav-heart active" data-id="${f.idDrink}" aria-label="Remove">
+          ${heartSVG}
+        </button>
+      </div>
+      <div class="fav-name">${f.strDrink}</div>
+    </div>
+  `).join("");
+}
+
 document.getElementById("cocktail-card").addEventListener("click", function(e) {
   const btn = e.target.closest(".card-heart");
   if (!btn || !currentDrink) return;
+  toggleFavorite(currentDrink);
   btn.classList.toggle("active");
 });
+
+document.getElementById("favorites-list").addEventListener("click", function(e) {
+  const btn = e.target.closest(".fav-heart");
+  if (!btn) return;
+  const id = btn.dataset.id;
+  let favs = getFavorites();
+  favs = favs.filter(f => f.idDrink !== id);
+  saveFavorites(favs);
+  const cardHeart = document.querySelector(".card-heart");
+  if (cardHeart && currentDrink && String(currentDrink.idDrink) === id) {
+    cardHeart.classList.remove("active");
+  }
+  renderFavorites();
+});
+
+renderFavorites(); 
 
 spin(); 

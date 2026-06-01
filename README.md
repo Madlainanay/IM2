@@ -15,3 +15,5 @@
 # JavaScript: API & Karte befüllen
 
 # Herz-Button
+
+# Favoriten
